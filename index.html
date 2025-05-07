@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Zikri | Front-End Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        darker: '#050505',
+                        accent: '#8b0000',
+                        accentlight: '#a52a2a',
+                        parchment: '#e6d8b5',
+                    },
+                    fontFamily: {
+                        medieval: ['MedievalSharp', 'cursive'],
+                        fantasy: ['Cinzel', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+        
+        body {
+            background-color: #0a0a0a;
+            color: #e6d8b5;
+            font-family: 'Cinzel', serif;
+            background-image: 
+                linear-gradient(rgba(10, 10, 10, 0.9), rgba(5, 5, 5, 0.95)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a0a0a"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%238b0000" stroke-width="0.5"/></svg>');
+        }
+        
+        .header-border {
+            border-bottom: 1px solid #8b0000;
+            box-shadow: 0 4px 6px -1px rgba(139, 0, 0, 0.3);
+        }
+        
+        .skill-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-icon:hover {
+            transform: scale(1.1);
+            color: #8b0000;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: rgba(10, 10, 10, 0.7);
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(139, 0, 0, 0.3);
+            border-color: #8b0000;
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, #8b0000 0%, #a52a2a 100%);
+            color: #e6d8b5;
+            font-weight: bold;
+            border: 1px solid #8b0000;
+        }
+        
+        .btn-accent:hover {
+            background: linear-gradient(135deg, #a52a2a 0%, #8b0000 100%);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #8b0000;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #8b0000; }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .text-parchment {
+            color: #e6d8b5;
+        }
+        
+        .bg-parchment {
+            background-color: #e6d8b5;
+        }
+        
+        .border-accent {
+            border-color: #8b0000;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .ornament {
+            position: relative;
+        }
+        
+        .ornament::before, .ornament::after {
+            content: "❖";
+            position: absolute;
+            color: #8b0000;
+            font-size: 1.2rem;
+        }
+        
+        .ornament::before {
+            left: -1.5rem;
+        }
+        
+        .ornament::after {
+            right: -1.5rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="header-border py-4 px-6 md:px-12 lg:px-24 bg-darker">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-accent font-fantasy">
+                <span class="text-3xl">Ahmad</span> Zikri
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-accent hover:text-parchment transition">Home</a>
+                <a href="#skills" class="text-parchment hover:text-accent transition">Skills</a>
+                <a href="#projects" class="text-parchment hover:text-accent transition">Projects</a>
+                <a href="#about" class="text-parchment hover:text-accent transition">About</a>
+                <a href="#contact" class="text-parchment hover:text-accent transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-accent text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-20 px-6 md:px-12 lg:px-24 bg-darker bg-opacity-90">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-accent font-fantasy">
+                    Greetings, Traveler
+                </h1>
+                <h2 class="text-2xl md:text-3xl mb-6 text-parchment">
+                    I am <span class="text-accent">Ahmad Zikri</span>, Front-End Developer
+                </h2>
+                <p class="text-lg mb-8 text-parchment">
+                    Forging digital experiences with the precision of a master blacksmith and the creativity of a seasoned adventurer.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="btn-accent px-6 py-3 rounded-lg transition">View My Work</a>
+                    <a href="#contact" class="border border-accent text-accent px-6 py-3 rounded-lg hover:bg-accent hover:text-parchment transition">Hire Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative floating">
+                    <img src="person.jpg" 
+                         alt="Developer Avatar" 
+                         class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-accent object-cover grayscale hover:grayscale-0 transition">
+                    <div class="absolute -bottom-2 -right-2 bg-darker p-2 rounded-full border-2 border-accent">
+                        <i class="fas fa-code text-accent text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-6 md:px-12 lg:px-24 bg-dark">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-accent font-fantasy ornament">My Arsenal</h2>
+                <div class="w-24 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <!-- HTML -->
+                <div class="flex flex-col items-center skill-icon">
+                    <i class="fab fa-html5 text-5xl text-accentlight mb-2"></i>
+                    <span class="text-parchment">HTML5</span>
+                </div>
+                
+                <!-- CSS -->
+                <div class="flex flex-col items-center skill-icon">
+                    <i class="fab fa-css3-alt text-5xl text-accentlight mb-2"></i>
+                    <span class="text-parchment">CSS3</span>
+                </div>
+                
+                <!-- JavaScript -->
+                <div class="flex flex-col items-center skill-icon">
+                    <i class="fab fa-js text-5xl text-accentlight mb-2"></i>
+                    <span class="text-parchment">JavaScript</span>
+                </div>
+                
+                <!-- React -->
+                <div class="flex flex-col items-center skill-icon">
+                    <i class="fab fa-react text-5xl text-accentlight mb-2"></i>
+                    <span class="text-parchment">React</span>
+                </div>                
+                
+                <!-- Tailwind -->
+                <div class="flex flex-col items-center skill-icon">
+                    <i class="fas fa-wind text-5xl text-accentlight mb-2"></i>
+                    <span class="text-parchment">Tailwind</span>
+                </div>                
+                
+                <!-- Figma -->
+                <div class="flex flex-col items-center skill-icon">
+                    <i class="fab fa-figma text-5xl text-accentlight mb-2"></i>
+                    <span class="text-parchment">Figma</span>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-6 md:px-12 lg:px-24 bg-darker">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-accent font-fantasy ornament">My Quests</h2>
+                <p class="text-parchment max-w-2xl mx-auto">These are the digital realms I've forged through my journey as a front-end developer.</p>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4"></div>
+            </div>            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-lg overflow-hidden p-6">
+                    <div class="mb-4">
+                        <img src="Screenshot 2025-05-05 194112.png" 
+                             alt="Elden Ring Fan Site" 
+                             class="w-full h-48 object-cover rounded grayscale hover:grayscale-0 transition">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-accent">LLM API Site</h3>
+                    <p class="text-parchment mb-4">Implementation LLM API into a website.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-accent bg-opacity-20 text-accentlight px-3 py-1 rounded-full text-sm">React</span>
+                        <span class="bg-accent bg-opacity-20 text-accentlight px-3 py-1 rounded-full text-sm">Tailwind</span>
+                    </div>
+                    <a href="https://remed-a-zikri-ai.vercel.app/" target="_blank" class="btn-accent px-4 py-2 rounded-lg text-sm transition inline-block">Visit Site</a>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-6 md:px-12 lg:px-24 bg-dark">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="relative">
+                        <img src="person.jpg" 
+                             alt="AZ" 
+                             class="w-64 h-64 rounded-full border-4 border-accent object-cover grayscale hover:grayscale-0 transition">
+                        <div class="absolute -bottom-2 -right-2 bg-darker p-3 rounded-full border-2 border-accent">
+                            <i class="fas fa-shield-alt text-accent text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-accent font-fantasy ornament">My Journey</h2>
+                    <p class="text-parchment mb-4">
+                        Like a knight rising from the ashes, my journey in web development began in the crucible of challenge. I've spent years honing my skills, facing countless bugs and errors like formidable foes, each one making me stronger.
+                    </p>
+                    <p class="text-parchment mb-4">
+                        My philosophy is simple: every website should tell a story, just like the great fantasy epics that inspire me. I combine technical precision with creative vision to craft digital experiences that feel alive.
+                    </p>
+                    <p class="text-parchment mb-6">
+                        When I'm not battling with code, you can find me exploring virtual realms, studying medieval history, or sketching fantasy creatures that might inspire my next project.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-medal text-accent mr-2"></i>
+                            <span class="text-parchment">2+ Years Experience</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-scroll text-accent mr-2"></i>
+                            <span class="text-parchment">10+ Projects Completed</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-trophy text-accent mr-2"></i>
+                            <span class="text-parchment">1+ Happy Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 md:px-12 lg:px-24 bg-darker">
+        <div class="container mx-auto">
+            <!-- <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-accent font-fantasy ornament">Send a Raven</h2>
+                <p class="text-parchment max-w-2xl mx-auto">Have a quest that requires my skills? Send me a message and let's forge something legendary together.</p>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-parchment mb-2">Your Name</label>
+                            <input type="text" id="name" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-parchment">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-parchment mb-2">Your Email</label>
+                            <input type="email" id="email" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-parchment">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-parchment mb-2">Subject</label>
+                        <input type="text" id="subject" 
+                               class="w-full px-4 py-3 bg-dark border border-accent rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-parchment">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-parchment mb-2">Your Message</label>
+                        <textarea id="message" rows="5" 
+                                  class="w-full px-4 py-3 bg-dark border border-accent rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-parchment"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn-accent px-6 py-3 rounded-lg transition w-full md:w-auto">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form> -->
+                
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 rounded-lg bg-dark">
+                        <i class="fas fa-envelope text-3xl text-accent mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-parchment">Email</h3>
+                        <p class="text-parchment">zipid@gmail.com</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-dark">
+                        <i class="fas fa-phone-alt text-3xl text-accent mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-parchment">Phone</h3>
+                        <p class="text-parchment">+62 822 596 09321</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-dark">
+                        <i class="fas fa-map-marker-alt text-3xl text-accent mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-parchment">Location</h3>
+                        <p class="text-parchment">Reichstag, Berlin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 md:px-12 lg:px-24 border-t border-accent bg-darker">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-2xl font-bold text-accent font-fantasy mb-4 md:mb-0">
+                    <span class="text-3xl">Ahmad</span> Zikri
+                </div>
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="#" class="text-parchment hover:text-accent transition text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-parchment hover:text-accent transition text-xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-parchment hover:text-accent transition text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-parchment hover:text-accent transition text-xl">
+                        <i class="fab fa-codepen"></i>
+                    </a>
+                </div>
+                <div class="text-parchment text-sm">
+                    &copy; 2025 ZIPID. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle would go here
+        // This is a placeholder for actual implementation
+    </script>
+</body>
+</html>
